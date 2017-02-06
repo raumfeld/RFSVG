@@ -1,0 +1,21 @@
+#!/usr/bin/ruby
+
+require './config'
+
+desc "Runs tests"
+lane :test do |options|
+    
+  scan(
+    scheme: APP_SCHEME,
+    devices: ["iPhone 5s"],
+  )
+  
+  xcov(
+    workspace: APP_WORKSPACE,
+    scheme: APP_SCHEME,
+    include_targets: APP_SCHEME + '.framework',
+    output_directory: "xcov_output",
+    minimum_coverage_percentage: 95.00
+  )
+  
+end
