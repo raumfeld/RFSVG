@@ -1,5 +1,11 @@
 # RFSVG
 
+[![Build Status](https://travis-ci.org/raumfeld/RFSVG.svg?branch=master)](https://travis-ci.org/raumfeld/RFSVG)
+[![codecov.io](https://codecov.io/github/raumfeld/RFSVG/coverage.svg?branch=master)](https://codecov.io/github/raumfeld/RFSVG/coverage.svg?branch=master)
+[![Version](https://img.shields.io/cocoapods/v/RFSVG.svg?style=flat)](http://cocoapods.org/pods/RFSVG)
+[![License](https://img.shields.io/cocoapods/l/RFSVG.svg?style=flat)](http://cocoapods.org/pods/RFSVG)
+[![Platform](https://img.shields.io/cocoapods/p/RFSVG.svg?style=flat)](http://cocoapods.org/pods/RFSVG)
+
 A SVG caching library.
 
 ## Usage

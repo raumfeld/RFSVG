@@ -2,12 +2,8 @@ language: swift
 cache: cocoapods
 osx_image: xcode8.2
 
-before_install:
-- gem install xcov --no-ri --no-rdoc --no-document
-- gem update fastlane --no-ri --no-rdoc --no-document
-
 script:
-- ./fastlane
+- ./run_tests.sh
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
