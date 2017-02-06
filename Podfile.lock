@@ -1,0 +1,29 @@
+PODS:
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - PocketSVG (2.1.1)
+  - RFSVG (0.1.0):
+    - PocketSVG
+  - SMWebView (1.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - RFSVG (from `.`)
+  - SMWebView
+
+EXTERNAL SOURCES:
+  RFSVG:
+    :path: .
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  PocketSVG: b5bd9de562adb211af33ab3a9a29dcacb3e8fe14
+  RFSVG: 83612e31acb04e701edab47453b75e95165e8c19
+  SMWebView: 603d4c80f255c75f03a58570f815c5dbdc37bcd1
+
+PODFILE CHECKSUM: 25fcd18bd10f0f55c409f3e80f40267eaff35a8e
+
+COCOAPODS: 1.1.1

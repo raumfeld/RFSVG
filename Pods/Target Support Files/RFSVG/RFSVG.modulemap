@@ -1,0 +1,6 @@
+framework module RFSVG {
+  umbrella header "RFSVG-umbrella.h"
+
+  export *
+  module * { export * }
+}

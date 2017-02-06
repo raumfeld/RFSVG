@@ -1,0 +1,27 @@
+{
+  "name": "RFSVG",
+  "version": "0.1.0",
+  "summary": "A SVG caching library.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://sources.teufelhome.com/projects/RFI/repos/raumfeld-ios/browse/LocalPods/RFSVG",
+  "license": "Copyright © 2011-2017 Lautsprecher Teufel GmbH. All rights reserved.",
+  "authors": {
+    "Dunja Lalic": "dunja.lalic@teufel.de"
+  },
+  "source": {
+    "git": "https://sources.teufelhome.com/scm/rfi/raumfeld-ios.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "requires_arc": true,
+  "source_files": [
+    "RFSVG/**/*.{h,m,swift}"
+  ],
+  "dependencies": {
+    "PocketSVG": [
+
+    ]
+  }
+}
