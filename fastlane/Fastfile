@@ -28,7 +28,7 @@ lane :test do |options|
     workspace: APP_WORKSPACE,
     proj: APP_PROJECT,
     cobertura_xml: true,
-    output_directory: "coverage-reports"
+    output_directory: "coverage"
   )
   
 end
