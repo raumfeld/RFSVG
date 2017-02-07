@@ -4,9 +4,12 @@ require './config'
 
 desc "Runs tests"
 lane :test do |options|
+  
+  clear_derived_data
     
   scan(
     scheme: APP_SCHEME,
+    output_types: "html, junit",
     devices: ["iPhone 5s"],
   )
   
@@ -14,8 +17,18 @@ lane :test do |options|
     workspace: APP_WORKSPACE,
     scheme: APP_SCHEME,
     include_targets: APP_SCHEME + '.framework',
-    output_directory: "xcov_output",
+    json_report: false,
+    html_report: false,
     minimum_coverage_percentage: 95.00
+  )
+
+  slather(
+    build_directory: ENV["DERIVED_DATA_PATH"],
+    scheme: APP_SCHEME,
+    workspace: APP_WORKSPACE,
+    proj: APP_PROJECT,
+    cobertura_xml: true,
+    output_directory: "coverage-reports"
   )
   
 end
