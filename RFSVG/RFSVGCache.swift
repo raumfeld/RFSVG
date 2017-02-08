@@ -17,7 +17,7 @@ class RFSVGCache: DirectoryWatcherDelegate {
     var bundle = Bundle.main
     private var directoryWatcher: DirectoryWatcher?
     private let imageCache: NSCache<NSString, UIImage> = NSCache()
-    private var writeQueue: DispatchQueue = DispatchQueue(label: "com.raumfeld.SerialSVGCacheQueue",attributes: [])
+    private var writeQueue: DispatchQueue = DispatchQueue(label: "com.raumfeld.SerialSVGCacheQueue", attributes: [])
     
     // MARK: Lifecycle
     
@@ -75,12 +75,12 @@ class RFSVGCache: DirectoryWatcherDelegate {
         self.directoryWatcher?.stopMonitoring()
     }
     
-    public func image(name: String,size: CGSize) -> UIImage {
+    public func image(name: String, size: CGSize) -> UIImage {
         if let image = imageFromMemoryCache(name: name, size: size) {
             return image
         }
 
-        if imageExistsInDiskCache(name: name,size: size) {
+        if imageExistsInDiskCache(name: name, size: size) {
             return imageFromDiskCache(name: name, size: size)
         }
         
@@ -91,7 +91,7 @@ class RFSVGCache: DirectoryWatcherDelegate {
     
     // MARK: File management
     
-    private func imageName(name: String,size: CGSize) -> String {
+    private func imageName(name: String, size: CGSize) -> String {
         return "\(name)_\(size.width)x\(size.height).png"
     }
     
@@ -105,18 +105,18 @@ class RFSVGCache: DirectoryWatcherDelegate {
         return URL(fileURLWithPath: pathForTemporaryDirectory())
     }
     
-    private func pathForImage(name: String,size: CGSize) -> String {
+    private func pathForImage(name: String, size: CGSize) -> String {
         let fileName = self.imageName(name: name, size: size)
         return pathForTemporaryDirectory() + "/" + fileName
     }
     
-    private func pathURLForImage(name: String,size: CGSize) -> URL {
+    private func pathURLForImage(name: String, size: CGSize) -> URL {
         return URL(fileURLWithPath: pathForImage(name: name, size: size))
     }
     
-    //MARK: SVG parsing
+    // MARK: SVG parsing
     
-    private func imageFromSVG(name: String,size: CGSize) -> UIImage {
+    private func imageFromSVG(name: String, size: CGSize) -> UIImage {
         let url = self.bundle.url(forResource: name, withExtension: "svg")!
         let layer: SVGLayer = SVGLayer.init(contentsOf: url)
         layer.contentsGravity = kCAGravityResizeAspect
@@ -128,7 +128,7 @@ class RFSVGCache: DirectoryWatcherDelegate {
     
     private func imageForLayer(layer: CALayer) -> UIImage {
         let bounds = layer.bounds
-        if (bounds.size.width == 0 || bounds.size.height == 0) {
+        if bounds.size.width == 0 || bounds.size.height == 0 {
             return UIImage()
         }
         
@@ -145,25 +145,28 @@ class RFSVGCache: DirectoryWatcherDelegate {
     
     // MARK: Caching
     
-    func imageFromMemoryCache(name: String,size: CGSize) -> UIImage? {
+    func imageFromMemoryCache(name: String, size: CGSize) -> UIImage? {
         return self.imageCache.object(forKey: imageName(name: name, size: size) as NSString)
     }
     
-    private func imageExistsInDiskCache(name: String,size: CGSize) -> Bool {
+    private func imageExistsInDiskCache(name: String, size: CGSize) -> Bool {
         return FileManager.default.fileExists(atPath: pathForImage(name: name, size: size))
     }
     
-    func imageFromDiskCache(name: String,size: CGSize) -> UIImage {
-        let pngData: Data = try! Data.init(contentsOf: pathURLForImage(name: name, size: size))
-        
-        guard let image = UIImage(data: pngData) else {
-            return UIImage()
+    func imageFromDiskCache(name: String, size: CGSize) -> UIImage {
+        do {
+            let pngData: Data = try Data.init(contentsOf: pathURLForImage(name: name, size: size))
+            if let image = UIImage(data: pngData) {
+                return image
+            }
+        } catch {
+            debugPrint("Error reading file at URL \(pathURLForImage(name: name, size: size))")
         }
         
-        return image
+        return UIImage()
     }
     
-    private func cacheImageAsync(image: UIImage, name: String,size: CGSize) {
+    private func cacheImageAsync(image: UIImage, name: String, size: CGSize) {
         var cost = 0
         if let imageRef = image.cgImage {
             cost = imageRef.bytesPerRow

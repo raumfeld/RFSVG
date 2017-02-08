@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol DirectoryWatcherDelegate {
+protocol DirectoryWatcherDelegate: class {
     func directoryDidChange(_ directoryWatcher: DirectoryWatcher)
 }
 
 class DirectoryWatcher {
     // MARK: Properties
     
-    private var delegate: DirectoryWatcherDelegate
+    private weak var delegate: DirectoryWatcherDelegate?
     private var monitoredDirectoryFileDescriptor: CInt = -1
     private let directoryWatcherQueue = DispatchQueue(label: "com.raumfeld.SVGCache.directoryWatcher", attributes: DispatchQueue.Attributes.concurrent)
     private var directoryWatcherSource: DispatchSourceFileSystemObject?
@@ -37,7 +37,7 @@ class DirectoryWatcher {
             directoryWatcherSource = DispatchSource.makeFileSystemObjectSource(fileDescriptor: monitoredDirectoryFileDescriptor, eventMask: [.write], queue: directoryWatcherQueue)
             
             directoryWatcherSource?.setEventHandler {
-                self.delegate.directoryDidChange(self)
+                self.delegate?.directoryDidChange(self)
                 
                 return
             }

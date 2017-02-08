@@ -13,7 +13,7 @@ extension UIButton {
         var rect = UIEdgeInsetsInsetRect(self.bounds, self.titleEdgeInsets)
         rect = UIEdgeInsetsInsetRect(rect, self.imageEdgeInsets)
         var image = UIImage.imageFromSVG(name, size: rect.size)
-        if (image.cgImage != nil) {
+        if image.cgImage != nil {
             image = image.withRenderingMode(.alwaysTemplate)
         }
         self.imageView?.contentMode = .scaleAspectFit
@@ -30,7 +30,7 @@ extension UIImageView {
 }
 
 extension UIImage {
-    open static func imageFromSVG(_ name: String,size: CGSize) -> UIImage {
+    open static func imageFromSVG(_ name: String, size: CGSize) -> UIImage {
         let image = RFSVGCache.sharedInstance.image(name: name, size: size)
         return image
     }

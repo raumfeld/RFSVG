@@ -6,7 +6,12 @@ desc "Runs tests"
 lane :test do |options|
   
   clear_derived_data
-    
+  
+  swiftlint(
+    config_file: ".swiftlint.yml",
+    ignore_exit_status: true
+  )
+  
   scan(
     scheme: APP_SCHEME,
     output_types: "html, junit",
