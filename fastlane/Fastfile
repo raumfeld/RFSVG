@@ -37,3 +37,41 @@ lane :test do |options|
   )
   
 end
+
+lane :release do |options|
+
+  ensure_git_branch
+  ensure_git_status_clean
+
+  pod_lib_lint(verbose: true)
+
+  bumpType = prompt(text: "Enter release type (major/minor/patch/custom)".green, boolean: false, ci_input: "")
+  case bumpType
+  when "major", "minor", "patch"
+    version_bump_podspec(bump_type: bumpType)
+  when "custom"
+  newVersion = prompt(text: "Enter version number".green, boolean: false, ci_input: "")
+  version_bump_podspec(version_number: newVersion)
+  else
+    raise "Invalid release type: #{bumpType}".red
+  end
+
+  version = version_get_podspec()
+
+  changelog = changelog_from_git_commits
+
+  git_commit(path: "RFSVG.podspec", message: "Bump to #{version}")
+  add_git_tag(tag: "#{version}")
+  push_to_git_remote(remote_branch: 'master', force: false, tags: true)
+
+  github_release = set_github_release(
+    api_token: options[:token],
+    repository_name: "raumfeld/RFSVG",
+    name: version,
+    tag_name: version,
+    description: changelog,
+    commitish: "master"
+  )
+  
+  pod_push(allow_warnings: true, verbose: true)
+end
