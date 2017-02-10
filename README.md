@@ -5,9 +5,8 @@
 [![Version](https://img.shields.io/cocoapods/v/RFSVG.svg?style=flat)](http://cocoapods.org/pods/RFSVG)
 [![License](https://img.shields.io/cocoapods/l/RFSVG.svg?style=flat)](http://cocoapods.org/pods/RFSVG)
 [![Platform](https://img.shields.io/cocoapods/p/RFSVG.svg?style=flat)](http://cocoapods.org/pods/RFSVG)
-[![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift)
 
-A SVG caching library.
+A library for easier use and reuse of SVG files. Maintains a cache of rasterized SVG images to minimize the need to re-parse and re-render the SVG file every time it needs to be displayed.
 
 ## Usage
 
@@ -50,7 +49,7 @@ After being requested to be rendered from SVG an image is **temporarily** cached
 
 * Xcode 8.2
 * Swift 3
-* iOS 8.0 and above
+* iOS 9.0 and above
 
 ## License
 
