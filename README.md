@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/raumfeld/RFSVG.svg?branch=master)](https://travis-ci.org/raumfeld/RFSVG)
 [![codecov](https://codecov.io/gh/raumfeld/RFSVG/branch/master/graph/badge.svg)](https://codecov.io/gh/raumfeld/RFSVG)
+[![Documentation](https://img.shields.io/cocoapods/metrics/doc-percent/RFSVG.svg)](http://cocoadocs.org/docsets/RFSVG)
 [![Version](https://img.shields.io/cocoapods/v/RFSVG.svg?style=flat)](http://cocoapods.org/pods/RFSVG)
 [![License](https://img.shields.io/cocoapods/l/RFSVG.svg?style=flat)](http://cocoapods.org/pods/RFSVG)
 [![Platform](https://img.shields.io/cocoapods/p/RFSVG.svg?style=flat)](http://cocoapods.org/pods/RFSVG)
