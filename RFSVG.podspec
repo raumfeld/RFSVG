@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RFSVG"
-  s.version          = "0.1.0"
+  s.version          = "1.0.0"
   s.license          = "MIT"
   s.summary          = "A SVG caching library."
   s.description      = <<-DESC
