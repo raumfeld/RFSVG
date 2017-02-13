@@ -20,6 +20,8 @@
 		BA426F951E38B5A100EA3A8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA426F931E38B5A100EA3A8C /* LaunchScreen.storyboard */; };
 		BA6A56C91E390284007C3988 /* RFSVGCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA426F9A1E38B67300EA3A8C /* RFSVGCache.swift */; };
 		BA73A2831E48D85E00654E12 /* renderSVG.html in Resources */ = {isa = PBXBuildFile; fileRef = BA73A2821E48D85E00654E12 /* renderSVG.html */; };
+		BA9F0CE61E51FED800CB97AE /* unicorn-stroked.svg in Resources */ = {isa = PBXBuildFile; fileRef = BA9F0CE51E51FED800CB97AE /* unicorn-stroked.svg */; };
+		BA9F0CE71E51FED800CB97AE /* unicorn-stroked.svg in Resources */ = {isa = PBXBuildFile; fileRef = BA9F0CE51E51FED800CB97AE /* unicorn-stroked.svg */; };
 		BABEC6CA1E3F48DC00D92BDE /* DirectoryWatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABEC6C91E3F48DC00D92BDE /* DirectoryWatcherTests.swift */; };
 		BABEC6CC1E3F553F00D92BDE /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABEC6CB1E3F553F00D92BDE /* UIKitExtensions.swift */; };
 		BABEC6CE1E3F685300D92BDE /* UIKitExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABEC6CD1E3F685300D92BDE /* UIKitExtensionsTests.swift */; };
@@ -61,6 +63,7 @@
 		BA426F961E38B5A100EA3A8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA426F9A1E38B67300EA3A8C /* RFSVGCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFSVGCache.swift; sourceTree = "<group>"; };
 		BA73A2821E48D85E00654E12 /* renderSVG.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = renderSVG.html; sourceTree = "<group>"; };
+		BA9F0CE51E51FED800CB97AE /* unicorn-stroked.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "unicorn-stroked.svg"; sourceTree = "<group>"; };
 		BABEC6C91E3F48DC00D92BDE /* DirectoryWatcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryWatcherTests.swift; sourceTree = "<group>"; };
 		BABEC6CB1E3F553F00D92BDE /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 		BABEC6CD1E3F685300D92BDE /* UIKitExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensionsTests.swift; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 				BA426F8A1E38B5A100EA3A8C /* AppDelegate.swift */,
 				BA426F8C1E38B5A100EA3A8C /* ViewController.swift */,
 				BABEC6D21E3F8F0800D92BDE /* unicorn.svg */,
+				BA9F0CE51E51FED800CB97AE /* unicorn-stroked.svg */,
 				BA426F8E1E38B5A100EA3A8C /* Main.storyboard */,
 				BA426F911E38B5A100EA3A8C /* Assets.xcassets */,
 				BA426F931E38B5A100EA3A8C /* LaunchScreen.storyboard */,
@@ -320,6 +324,7 @@
 			files = (
 				BABEC6D31E3F8F0800D92BDE /* unicorn.svg in Resources */,
 				BA73A2831E48D85E00654E12 /* renderSVG.html in Resources */,
+				BA9F0CE61E51FED800CB97AE /* unicorn-stroked.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +335,7 @@
 				BA426F951E38B5A100EA3A8C /* LaunchScreen.storyboard in Resources */,
 				BABEC6D41E3F8F0800D92BDE /* unicorn.svg in Resources */,
 				BA426F921E38B5A100EA3A8C /* Assets.xcassets in Resources */,
+				BA9F0CE71E51FED800CB97AE /* unicorn-stroked.svg in Resources */,
 				BA426F901E38B5A100EA3A8C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
