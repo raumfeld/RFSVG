@@ -49,7 +49,7 @@ CGRect _AdjustCGRectForContentsGravity(CGRect aRect, CGSize aSize, NSString *aGr
 }
 
 - (instancetype)init {
-    return [self initWithSVGSource:(_Nonnull id)nil];
+    return [self initWithSVGSource: nil];
 }
 
 - (instancetype)initWithCoder:(NSCoder * const)aDecoder
@@ -60,8 +60,8 @@ CGRect _AdjustCGRectForContentsGravity(CGRect aRect, CGSize aSize, NSString *aGr
     return self;
 }
 
-- (void)_cr_setPaths:(NSArray<SVGBezierPath*> *)paths
-{
+- (void)_cr_setPaths:(NSArray<SVGBezierPath*> *)paths {
+
     [_shapeLayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     [_shapeLayers removeAllObjects];
     _untouchedPaths = [NSMutableArray new];
@@ -69,9 +69,6 @@ CGRect _AdjustCGRectForContentsGravity(CGRect aRect, CGSize aSize, NSString *aGr
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
     for(__strong SVGBezierPath *path in paths) {
-        if ([path.svgAttributes[@"display"] isEqualToString:@"none"]) {
-            continue;
-        }        
         CAShapeLayer * const layer = [CAShapeLayer new];
 
         if(path.svgAttributes[@"transform"]) {
@@ -126,10 +123,10 @@ CGRect _AdjustCGRectForContentsGravity(CGRect aRect, CGSize aSize, NSString *aGr
 #else
     NSString *path = nil;
     NSPredicate * const pred = [NSPredicate predicateWithFormat:@"lastPathComponent LIKE[c] %@",
-                                [svgName stringByAppendingPathExtension:@"svg"]];
+                                [aFileName stringByAppendingPathExtension:@"svg"]];
     NSString * const sourceDirs = [[NSProcessInfo processInfo] environment][@"IB_PROJECT_SOURCE_DIRECTORIES"];
     for(__strong NSString *dir in [sourceDirs componentsSeparatedByString:@":"]) {
-        // Go up the hierarchy until we don't find an xcodeproj
+        // Go up the hiearchy until we don't find an xcodeproj
         NSString *projectDir = dir;
         NSPredicate *xcodePredicate = [NSPredicate predicateWithFormat:@"self ENDSWITH[c] %@", @".xcodeproj"];
         do {
@@ -207,7 +204,14 @@ CGRect _AdjustCGRectForContentsGravity(CGRect aRect, CGSize aSize, NSString *aGr
 {
     CGRect bounds = CGRectZero;
     for(SVGBezierPath *path in _untouchedPaths) {
-        bounds = CGRectUnion(bounds, path.bounds);
+        CGRect pathBounds = path.bounds;
+        CGFloat lineWidth = [path.svgAttributes[@"stroke-width"] floatValue];
+        if (_scaleLineWidth && lineWidth > 1.0) {
+            CGPathRef pathRef = CGPathCreateCopyByStrokingPath(path.CGPath, NULL, lineWidth, path.lineCapStyle, path.lineJoinStyle, path.miterLimit);
+            pathBounds = CGPathGetPathBoundingBox(pathRef);
+            CGPathRelease(pathRef);
+        }
+        bounds = CGRectUnion(bounds, pathBounds);
     }
     return bounds.size;
 }

@@ -8,11 +8,11 @@
 
 #import "SVGPortability.h"
 
+IB_DESIGNABLE
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// A view that renders an SVG file.
-IB_DESIGNABLE
 @interface SVGImageView : PSVGView
 
 
@@ -28,7 +28,7 @@ IB_DESIGNABLE
  // set the layer's frame and add it as a sublayer to display it.
  *
  */
-- (instancetype)initWithSVGSource:(NSString *)svgSource;
+- (instancetype)initWithSVGSource:(NSString *)svgSource NS_DESIGNATED_INITIALIZER;
 
 
 /*!
@@ -42,14 +42,6 @@ IB_DESIGNABLE
  */
 - (instancetype)initWithContentsOfURL:(NSURL *)url;
 
-
-/*!
- *  @discussion Clears contents and renders a new SVG given the filename in the main bundle.
- *
- *  @param svgName The filename of an SVG in the main bundle.
- *
- */
-@property(nonatomic, copy) IBInspectable NSString *svgName;
 
 /*!
  *  @discussion Clears contents and renders a new SVG given its complete XML representation.

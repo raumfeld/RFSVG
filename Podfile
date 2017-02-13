@@ -4,6 +4,7 @@ use_frameworks!
 
 def shared_pods
     pod "RFSVG", :path => "."
+    pod 'PocketSVG', :git => 'https://github.com/raumfeld/PocketSVG', :branch => 'lineWidthBoundsFix'
 end
 
 target "RFSVG" do

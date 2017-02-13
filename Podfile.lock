@@ -4,26 +4,35 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - PocketSVG (2.1.1)
-  - RFSVG (0.1.0):
+  - PocketSVG (2.0.0)
+  - RFSVG (1.0.0):
     - PocketSVG
   - SMWebView (1.0)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
+  - PocketSVG (from `https://github.com/raumfeld/PocketSVG`, branch `lineWidthBoundsFix`)
   - RFSVG (from `.`)
   - SMWebView
 
 EXTERNAL SOURCES:
+  PocketSVG:
+    :branch: lineWidthBoundsFix
+    :git: https://github.com/raumfeld/PocketSVG
   RFSVG:
     :path: .
 
+CHECKOUT OPTIONS:
+  PocketSVG:
+    :commit: 1b604764a7235fc61234016a4e169ca878c257da
+    :git: https://github.com/raumfeld/PocketSVG
+
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  PocketSVG: b5bd9de562adb211af33ab3a9a29dcacb3e8fe14
-  RFSVG: 83612e31acb04e701edab47453b75e95165e8c19
+  PocketSVG: 5924c20ec9220fe1717087e56c3d5da27ca76863
+  RFSVG: 8d2930eb7a1b11359330382f0f620ecfca6d3afb
   SMWebView: 603d4c80f255c75f03a58570f815c5dbdc37bcd1
 
-PODFILE CHECKSUM: 25fcd18bd10f0f55c409f3e80f40267eaff35a8e
+PODFILE CHECKSUM: faf5332ddcd4c60699747a84f2a6ed8081789d97
 
 COCOAPODS: 1.1.1
